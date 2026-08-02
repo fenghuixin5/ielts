@@ -68,7 +68,7 @@ export default function Home() {
   };
 
   const startVoice = () => {
-    type Rec = { lang: string; interimResults: boolean; start:()=>void; onresult:(e:{results:{0:{0:{transcript:string}}}[]})=>void; onend:()=>void; onerror:()=>void };
+    type Rec = { lang: string; interimResults: boolean; start:()=>void; onresult:(e:{results:ArrayLike<ArrayLike<{transcript:string}>>})=>void; onend:()=>void; onerror:()=>void };
     const w = window as typeof window & { SpeechRecognition?: new()=>Rec; webkitSpeechRecognition?: new()=>Rec };
     const Engine = w.SpeechRecognition || w.webkitSpeechRecognition;
     if (!Engine) return notify("Voice input works best in Chrome or Safari");
